@@ -60,7 +60,7 @@ dependencies {
 
 
     // ViewModel and Livedata
-    implementation("androidx.lifecycle:lifecycle-*:2.4.0-rc01")
+//    implementation("androidx.lifecycle:lifecycle-extensions:2.4.0-rc01")
 
     // Android navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
