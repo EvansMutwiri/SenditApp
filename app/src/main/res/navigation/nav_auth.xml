@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_auth"
-    app:startDestination="@id/registrationFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/registrationFragment"
@@ -23,4 +23,9 @@
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.evans.senditapp.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" />
 </navigation>

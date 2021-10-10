@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="sendit_50">#fce6e6</color>
-    <color name="sendit_100">#f8c2c2</color>
+    <color name="sendit_100">#FFDBDB</color>
     <color name="sendit_200">#f49999</color>
     <color name="sendit_300">#f07070</color>
     <color name="sendit_400">#ec5151</color>
