@@ -9,6 +9,7 @@ import androidx.navigation.ui.NavigationUI
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_SenditApp)
         setContentView(R.layout.activity_main)
 
         val navHostFragment =
