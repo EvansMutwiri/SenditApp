@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.onboarding.screens.FirstScreen">
+
+
+    <ImageView
+        android:id="@+id/onboardingTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/onboardingtwo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <TextView
+        android:id="@+id/tv_convenient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:lineHeight="32sp"
+        android:text="Affordable"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textFontWeight="800"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/onboardingTwo"
+        app:layout_constraintStart_toStartOf="@+id/onboardingTwo"
+        app:layout_constraintTop_toBottomOf="@+id/onboardingTwo" />
+
+    <TextView
+        android:id="@+id/tv_convenient_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Price is based on your weight category."
+        android:textAlignment="center"
+        android:textColor="#C8000000"
+        android:textFontWeight="400"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_convenient"
+        app:layout_constraintStart_toStartOf="@+id/tv_convenient"
+        app:layout_constraintTop_toBottomOf="@+id/tv_convenient" />
+
+    <TextView
+        android:id="@+id/skipTV2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:drawablePadding="2dp"
+        android:padding="2dp"
+        android:layout_marginStart="16dp"
+        android:text="Skip"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/progressImg"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/progressImg"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/pagetwo"
+        android:baselineAlignBottom="true"
+        app:layout_constraintEnd_toStartOf="@+id/pageTwoTv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/skipTV2"
+        app:layout_constraintTop_toTopOf="@+id/skipTV2" />
+
+    <TextView
+        android:id="@+id/pageTwoTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:padding="2dp"
+        android:text="Next"
+        android:textColor="@color/black"
+        app:drawableEndCompat="@drawable/ic_arrow_forward"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/progressImg" />
+</androidx.constraintlayout.widget.ConstraintLayout>
