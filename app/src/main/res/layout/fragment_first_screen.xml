@@ -72,13 +72,13 @@
         android:layout_marginTop="3dp"
         android:src="@drawable/pageone"
         android:baselineAlignBottom="true"
-        app:layout_constraintEnd_toStartOf="@+id/pageTwoTv"
+        app:layout_constraintEnd_toStartOf="@+id/next1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/skipTV"
         app:layout_constraintTop_toTopOf="@+id/skipTV" />
 
     <TextView
-        android:id="@+id/pageTwoTv"
+        android:id="@+id/next1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
