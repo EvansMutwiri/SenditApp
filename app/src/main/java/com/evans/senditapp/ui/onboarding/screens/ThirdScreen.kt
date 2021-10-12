@@ -1,5 +1,6 @@
 package com.evans.senditapp.ui.onboarding.screens
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,8 +30,16 @@ class ThirdScreen : Fragment() {
 
         rootView.startBtn.setOnClickListener {
             findNavController().navigate(R.id.action_viewPagerFragment_to_registrationFragment)
+            onBoardingFinished()
         }
 
         return rootView
+    }
+
+    private fun onBoardingFinished() {
+        val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putBoolean("finished", true)
+        editor.apply()
     }
 }
