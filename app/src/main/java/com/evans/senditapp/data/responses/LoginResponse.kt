@@ -1,4 +1,4 @@
-package com.evans.senditapp.responses
+package com.evans.senditapp.data.responses
 
 data class LoginResponse(
     val email: String,

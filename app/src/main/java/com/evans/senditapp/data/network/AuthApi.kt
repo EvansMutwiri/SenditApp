@@ -1,6 +1,6 @@
-package com.evans.senditapp.network
+package com.evans.senditapp.data.network
 
-import com.evans.senditapp.responses.LoginResponse
+import com.evans.senditapp.data.responses.LoginResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST

@@ -1,6 +1,6 @@
-package com.evans.senditapp.repository
+package com.evans.senditapp.data.repository
 
-import com.evans.senditapp.network.AuthApi
+import com.evans.senditapp.data.network.AuthApi
 
 class AuthRepository (
     private val api: AuthApi

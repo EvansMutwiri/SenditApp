@@ -2,8 +2,8 @@ package com.evans.senditapp.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.evans.senditapp.repository.AuthRepository
-import com.evans.senditapp.repository.BaseRepository
+import com.evans.senditapp.data.repository.AuthRepository
+import com.evans.senditapp.data.repository.BaseRepository
 import com.evans.senditapp.ui.auth.AuthViewModel
 import java.lang.IllegalArgumentException
 

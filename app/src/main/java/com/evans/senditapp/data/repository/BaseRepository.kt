@@ -1,6 +1,6 @@
-package com.evans.senditapp.repository
+package com.evans.senditapp.data.repository
 
-import com.evans.senditapp.network.Resource
+import com.evans.senditapp.data.network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

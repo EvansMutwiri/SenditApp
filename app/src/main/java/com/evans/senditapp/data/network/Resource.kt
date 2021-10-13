@@ -1,4 +1,4 @@
-package com.evans.senditapp.network
+package com.evans.senditapp.data.network
 
 import okhttp3.ResponseBody
 

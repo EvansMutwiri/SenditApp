@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.evans.senditapp.network.Resource
-import com.evans.senditapp.repository.AuthRepository
-import com.evans.senditapp.responses.LoginResponse
+import com.evans.senditapp.data.network.Resource
+import com.evans.senditapp.data.repository.AuthRepository
+import com.evans.senditapp.data.responses.LoginResponse
 import kotlinx.coroutines.launch
 
 class AuthViewModel(
