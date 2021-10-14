@@ -28,7 +28,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
-        android:hint="Full Name"
+        android:hint="Username"
         app:endIconDrawable="@drawable/ic_outline_person_outline_24"
         app:endIconMode="custom"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/logoImageView">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/UsernameTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -57,6 +58,8 @@
         app:layout_constraintTop_toBottomOf="@+id/username_textView">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/SignUpEmail"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -78,6 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/email_textView">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/PasswordSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
@@ -100,6 +104,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPassword">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/PasswordSignupConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
@@ -140,7 +145,7 @@
             android:text="Already have an account?    " />
 
         <TextView
-            android:id="@+id/login_option"
+            android:id="@+id/loginOption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Log in"
