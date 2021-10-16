@@ -1,7 +1,10 @@
 package com.evans.senditapp.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -13,9 +16,15 @@ import com.evans.senditapp.data.network.AuthApi
 import com.evans.senditapp.data.network.Resource
 import com.evans.senditapp.data.repository.AuthRepository
 import com.evans.senditapp.ui.base.BaseFragment
+import com.evans.senditapp.ui.home.MapsActivity
+import com.google.android.material.progressindicator.CircularProgressIndicator
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
@@ -24,7 +33,12 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             when(it){
                 is Resource.Success -> {
-                    Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "success", Toast.LENGTH_LONG).show()
+
+                    progressBar.playAnimation()
+
+                        val intent = Intent(requireContext(), MapsActivity::class.java)
+                        startActivity(intent)
                 }
                 is Resource.Failure -> {
                     if (it.isNetworkError)

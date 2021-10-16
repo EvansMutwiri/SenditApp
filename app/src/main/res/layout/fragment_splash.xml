@@ -24,7 +24,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:id="@+id/progressBar"
-        app:lottie_autoPlay="true"
+        app:lottie_autoPlay="false"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/lottieprogress"
         android:layout_marginBottom="137dp"

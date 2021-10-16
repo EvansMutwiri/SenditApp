@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_registrationFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -44,4 +48,9 @@
             android:id="@+id/action_viewPagerFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
     </fragment>
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.evans.senditapp.ui.home.MapsActivity"
+        android:label="activity_maps"
+        tools:layout="@layout/homepage" />
 </navigation>
