@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.evans.senditapp.Constants
+import com.evans.senditapp.PreferencesProvider
 import com.evans.senditapp.R
 import com.evans.senditapp.data.network.AuthApi
 import com.evans.senditapp.data.network.Resource
@@ -45,8 +47,12 @@ import kotlinx.android.synthetic.main.fragment_registration.*
 
 class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBinding, AuthRepository>() {
 
+    private lateinit var preferencesProvider: PreferencesProvider
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        preferencesProvider = PreferencesProvider(requireContext())
 
         viewModel.signupResponse.observe(viewLifecycleOwner, Observer {
             when(it) {
@@ -69,6 +75,9 @@ class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBin
             val email: String = binding.SignUpEmail.text.toString().trim()
             val password: String = binding.PasswordSignup.text.toString()
             val passConfirm: String = binding.PasswordSignupConfirm.text.toString()
+
+            preferencesProvider.putString(Constants.KEY_EMAIL, SignUpEmail.text.toString())
+            preferencesProvider.putString(Constants.USERNAME, UsernameTV.text.toString())
 
             // add validation
 
