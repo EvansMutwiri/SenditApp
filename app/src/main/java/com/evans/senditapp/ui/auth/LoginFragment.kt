@@ -3,6 +3,7 @@ package com.evans.senditapp.ui.auth
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,17 +11,24 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
+import com.evans.senditapp.Constants
+import com.evans.senditapp.PreferencesProvider
 import com.evans.senditapp.R
 import com.evans.senditapp.databinding.FragmentLoginBinding
 import com.evans.senditapp.data.network.AuthApi
 import com.evans.senditapp.data.network.Resource
 import com.evans.senditapp.data.repository.AuthRepository
+import com.evans.senditapp.data.responses.LoginResponse
+import com.evans.senditapp.databinding.HomepageBinding
 import com.evans.senditapp.ui.base.BaseFragment
 import com.evans.senditapp.ui.home.MapsActivity
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_registration.*
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
+
+    private lateinit var preferencesProvider: PreferencesProvider
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -29,13 +37,12 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
         super.onActivityCreated(savedInstanceState)
+        preferencesProvider = PreferencesProvider(requireContext())
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             when(it){
                 is Resource.Success -> {
                     Toast.makeText(requireContext(), "success", Toast.LENGTH_LONG).show()
-
-                    progressBar.playAnimation()
 
                         val intent = Intent(requireContext(), MapsActivity::class.java)
                         startActivity(intent)
@@ -70,7 +77,10 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         }
 
         binding.signupOption.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+            PreferenceManager.getDefaultSharedPreferences(activity).edit().putString("access", it.toString()).apply()
+           val tok = PreferenceManager.getDefaultSharedPreferences(activity).getString("access", it.toString())
+            Toast.makeText(requireContext(), tok, Toast.LENGTH_SHORT).show()
+            Intent(requireContext(), MapsActivity::class.java)
         }
     }
     override fun getViewModel() = AuthViewModel::class.java

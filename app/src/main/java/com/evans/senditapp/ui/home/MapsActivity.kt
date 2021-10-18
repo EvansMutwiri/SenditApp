@@ -1,6 +1,7 @@
 package com.evans.senditapp.ui.home
 
 
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -24,6 +25,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: HomepageBinding
     private lateinit var preferencesProvider: PreferencesProvider
     lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var lastLocation: Location
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,11 +71,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        mMap.uiSettings.isZoomControlsEnabled = true
+//        mMap.uiSettings.isZoomControlsEnabled = true
         mMap.uiSettings.isMyLocationButtonEnabled = true
         val ngongLane = LatLng(1.3005, 36.7848)
         mMap.addMarker(MarkerOptions().position(ngongLane).title("Marker in Ngong"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ngongLane, 15F))
+//        setUpMap()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
