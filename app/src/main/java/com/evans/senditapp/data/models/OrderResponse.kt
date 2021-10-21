@@ -1,7 +1,6 @@
-package com.evans.senditapp.data.responses
+package com.evans.senditapp.data.models
 
 data class OrderResponse(
-    val date: String,
     val description: String,
     val destination: String,
     val id: Int,

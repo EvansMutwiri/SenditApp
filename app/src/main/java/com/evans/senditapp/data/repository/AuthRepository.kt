@@ -1,6 +1,7 @@
 package com.evans.senditapp.data.repository
 
 import com.evans.senditapp.data.network.AuthApi
+import retrofit2.http.Header
 
 class AuthRepository(
     private val api: AuthApi
@@ -16,8 +17,7 @@ class AuthRepository(
         password: String
     ) = safeApiCall { api.signUp(email, username, password) }
 
-    suspend fun getOrders(
-        date: String,
+    suspend fun postOrders(
         description: String,
         destination: String,
         pickup_location: String,
@@ -25,5 +25,7 @@ class AuthRepository(
         reciever_number: String,
         vehicle: String,
         weight: String
-    ) = safeApiCall { api.postOrders(date, description, destination, pickup_location, reciever_name, reciever_number, vehicle, weight) }
+    ) = safeApiCall { api.postOrders(description, destination, pickup_location, reciever_name, reciever_number, vehicle, weight) }
+
+    suspend fun getData (@Header("Bearer token here")access: String) = safeApiCall { api.getData("") }
 }

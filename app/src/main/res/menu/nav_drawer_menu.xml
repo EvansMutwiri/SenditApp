@@ -4,15 +4,15 @@
         android:id="@+id/group1"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/item1"
-            android:title="profile"
+            android:id="@+id/profile"
+            android:title="About"
             android:checked="true" />
         <item
-            android:id="@+id/item2"
-            android:title="orders" />
+            android:id="@+id/orders"
+            android:title="Orders" />
         <item
-            android:id="@+id/item3"
-            android:title="refer" />
+            android:id="@+id/refer"
+            android:title="Refer" />
         <item
             android:id="@+id/logout"
             android:title="Logout"

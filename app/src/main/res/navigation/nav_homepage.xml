@@ -2,4 +2,29 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_homepage"/>
+    android:id="@+id/nav_homepage"
+    app:startDestination="@id/ordersFragment3">
+    <fragment
+        android:id="@+id/createOrderFragment3"
+        android:name="com.evans.senditapp.ui.home.CreateOrderFragment"
+        android:label="fragment_create_order"
+        tools:layout="@layout/fragment_create_order" >
+        <action
+            android:id="@+id/action_createOrderFragment3_to_ordersFragment3"
+            app:destination="@id/ordersFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/ordersFragment3"
+        android:name="com.evans.senditapp.ui.orders.OrdersFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_orders" >
+        <action
+            android:id="@+id/action_ordersFragment3_to_userProfileFragment3"
+            app:destination="@id/userProfileFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment3"
+        android:name="com.evans.senditapp.ui.home.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" />
+</navigation>

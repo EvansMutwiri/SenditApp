@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home" android:icon="@drawable/ic_outline_home_24" android:id="@+id/createOrderFragment3"/>
+    <item android:title="Orders" android:icon="@drawable/ic_outline_history_toggle_off_24" android:id="@+id/ordersFragment3"/>
+    <item android:title="Profile" android:icon="@drawable/ic_outline_person_outline_24" android:id="@+id/userProfileFragment3"/>
+</menu>

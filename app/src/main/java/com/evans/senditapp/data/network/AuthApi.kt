@@ -1,10 +1,12 @@
 package com.evans.senditapp.data.network
 
-import com.evans.senditapp.data.responses.LoginResponse
-import com.evans.senditapp.data.responses.OrderResponse
-import com.evans.senditapp.data.responses.SignupResponse
+import com.evans.senditapp.data.models.LoginResponse
+import com.evans.senditapp.data.models.OrderResponse
+import com.evans.senditapp.data.models.SignupResponse
+import retrofit2.Call
 import retrofit2.http.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 interface AuthApi {
 
@@ -26,7 +28,6 @@ interface AuthApi {
     @FormUrlEncoded
     @POST("order/v1/order/")
     suspend fun postOrders(
-        @Field("date") date: String,
         @Field("vehicle") vehicle: String,
         @Field("description") description: String,
         @Field("pickup_location") pickup_location: String,
@@ -37,7 +38,7 @@ interface AuthApi {
     ) : OrderResponse
 
     @GET("order/v1/order/")
-    suspend fun getOrders()
+    fun getData(@Header("Authorization") token: String): Call<ArrayList<OrderResponse>>
 
     @DELETE("order/{id}/")
     suspend fun deleteById(

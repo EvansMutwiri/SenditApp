@@ -2,29 +2,21 @@ package com.evans.senditapp.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
-import com.evans.senditapp.Constants
 import com.evans.senditapp.PreferencesProvider
 import com.evans.senditapp.R
 import com.evans.senditapp.databinding.FragmentLoginBinding
 import com.evans.senditapp.data.network.AuthApi
 import com.evans.senditapp.data.network.Resource
 import com.evans.senditapp.data.repository.AuthRepository
-import com.evans.senditapp.data.responses.LoginResponse
-import com.evans.senditapp.databinding.HomepageBinding
 import com.evans.senditapp.ui.base.BaseFragment
-import com.evans.senditapp.ui.home.MapsActivity
-import com.google.android.material.progressindicator.CircularProgressIndicator
-import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.fragment_registration.*
+import com.evans.senditapp.ui.home.HomeActivity
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
 
@@ -42,10 +34,25 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             when(it){
                 is Resource.Success -> {
-                    Toast.makeText(requireContext(), "success", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
 
-                        val intent = Intent(requireContext(), MapsActivity::class.java)
+                    PreferenceManager.getDefaultSharedPreferences(activity).edit().putString("access",
+                        it.value.access).apply()
+                    var tok = PreferenceManager.getDefaultSharedPreferences(activity).getString("access", it.value.access)
+//                    Toast.makeText(requireContext(), tok, Toast.LENGTH_SHORT).show()
+
+                    val email: String = binding.editEmail.text.toString().trim()
+                    preferencesProvider.putString("useremail", email)
+
+                    Toast.makeText(requireContext(), email, Toast.LENGTH_SHORT).show()
+
+                        val intent = Intent(requireContext(), HomeActivity::class.java)
                         startActivity(intent)
+//                    findNavController().navigate(R.id.action_registrationFragment_to_userProfileFragment2)
+
+//                    if (findNavController().currentDestination?.id == R.id.registrationFragment) {
+//                        findNavController().navigate(R.id.action_registrationFragment_to_mapsActivity)
+//                    }
                 }
                 is Resource.Failure -> {
                     if (it.isNetworkError)
@@ -59,13 +66,12 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
 
             val email: String = binding.editEmail.text.toString().trim()
             val password = binding.editPassword.text.toString()
-            val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
             //validation
             if (email.isEmpty() || email.isBlank() || password.isBlank()){
                 Toast.makeText(requireContext(), "Email address or password cannot be blank", Toast.LENGTH_LONG).show()
             }
-            if (!email.matches(emailPattern.toRegex())){
+            if (!email.contains("@")){
                 Toast.makeText(requireContext(), "Enter valid email address", Toast.LENGTH_LONG).show()
             }
             if (password.length < 6){
@@ -77,10 +83,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         }
 
         binding.signupOption.setOnClickListener {
-            PreferenceManager.getDefaultSharedPreferences(activity).edit().putString("access", it.toString()).apply()
-           val tok = PreferenceManager.getDefaultSharedPreferences(activity).getString("access", it.toString())
-            Toast.makeText(requireContext(), tok, Toast.LENGTH_SHORT).show()
-            Intent(requireContext(), MapsActivity::class.java)
+            findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
         }
     }
     override fun getViewModel() = AuthViewModel::class.java

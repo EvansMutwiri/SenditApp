@@ -5,4 +5,16 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+
+    <string-array name="weight_categories">
+        <item>LIGHT</item>
+        <item>MEDIUM</item>
+        <item>HEAVY</item>
+    </string-array>
+
+    <string-array name="vehicle_categories">
+        <item>MOTORBIKE</item>
+        <item>VAN</item>
+        <item>TRUCK</item>
+    </string-array>
 </resources>

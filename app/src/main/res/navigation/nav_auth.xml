@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_registrationFragment_to_mapsActivity"
             app:destination="@id/mapsActivity" />
+        <action
+            android:id="@+id/action_registrationFragment_to_userProfileFragment2"
+            app:destination="@id/userProfileFragment2" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -38,6 +41,9 @@
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
@@ -53,4 +59,30 @@
         android:name="com.evans.senditapp.ui.home.MapsActivity"
         android:label="activity_maps"
         tools:layout="@layout/homepage" />
+    <fragment
+        android:id="@+id/createOrderFragment2"
+        android:name="com.evans.senditapp.ui.home.CreateOrderFragment"
+        android:label="fragment_create_order"
+        tools:layout="@layout/fragment_create_order" >
+        <action
+            android:id="@+id/action_createOrderFragment2_to_ordersFragment2"
+            app:destination="@id/ordersFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment2"
+        android:name="com.evans.senditapp.ui.home.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfileFragment2_to_createOrderFragment2"
+            app:destination="@id/createOrderFragment2" />
+        <action
+            android:id="@+id/action_userProfileFragment2_to_ordersFragment2"
+            app:destination="@id/ordersFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/ordersFragment2"
+        android:name="com.evans.senditapp.ui.orders.OrdersFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_orders" />
 </navigation>

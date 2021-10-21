@@ -16,34 +16,6 @@ import com.evans.senditapp.databinding.FragmentRegistrationBinding
 import com.evans.senditapp.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_registration.*
 
-//class RegistrationFragment : Fragment() {
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//    }
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        // Inflate the layout for this fragment
-//        val rootView = inflater.inflate(R.layout.fragment_registration, container, false)
-//
-//        val loginOption = rootView.findViewById<TextView>(R.id.login_option)
-//
-//        loginOption.setOnClickListener {
-//            findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
-//        }
-//
-//        val btnSignUp = rootView.findViewById<Button>(R.id.signUpBtn)
-//        btnSignUp.setOnClickListener {
-//            findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
-//        }
-//        return rootView
-//    }
-//}
-
 
 class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBinding, AuthRepository>() {
 
@@ -81,7 +53,7 @@ class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBin
 
             // add validation
 
-            if (username.isEmpty() || email.isBlank()) {
+            if (username.isEmpty() || email.isEmpty()) {
                 Toast.makeText(requireContext(), "Fields cannot be empty", Toast.LENGTH_SHORT).show()
             }
             if (!email.contains("@"))

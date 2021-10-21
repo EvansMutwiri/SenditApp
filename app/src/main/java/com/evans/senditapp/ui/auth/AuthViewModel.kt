@@ -6,8 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.evans.senditapp.data.network.Resource
 import com.evans.senditapp.data.repository.AuthRepository
-import com.evans.senditapp.data.responses.LoginResponse
-import com.evans.senditapp.data.responses.SignupResponse
+import com.evans.senditapp.data.models.LoginResponse
+import com.evans.senditapp.data.models.OrderResponse
+import com.evans.senditapp.data.models.SignupResponse
 import kotlinx.coroutines.launch
 
 class AuthViewModel(
@@ -21,6 +22,10 @@ class AuthViewModel(
     private val _signupResponse : MutableLiveData<Resource<SignupResponse>> = MutableLiveData()
     val signupResponse: LiveData<Resource<SignupResponse>>
         get() = _signupResponse
+
+    private val _orderResponse : MutableLiveData<Resource<OrderResponse>> = MutableLiveData()
+    val orderResponse : LiveData<Resource<OrderResponse>>
+    get() = _orderResponse
 
     fun login (
         email: String,
@@ -36,4 +41,20 @@ class AuthViewModel(
     ) = viewModelScope.launch {
         _signupResponse.value = repository.signUp(email, username, password)
     }
+
+    fun postOrders (
+        description: String,
+        destination: String,
+        pickup_location: String,
+        reciever_name: String,
+        reciever_number: String,
+        vehicle: String,
+        weight: String
+    ) = viewModelScope.launch {
+        _orderResponse.value = repository.postOrders(description, destination, pickup_location, reciever_name, reciever_number, vehicle, weight)
+    }
+
+//    fun getData(access: String) = viewModelScope.launch {
+//        _orderResponse.value = repository.getData("Bearer token")
+//    }
 }

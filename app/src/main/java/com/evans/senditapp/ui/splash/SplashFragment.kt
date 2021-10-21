@@ -3,6 +3,7 @@ package com.evans.senditapp.ui.splash
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
+import android.preference.PreferenceManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +38,10 @@ class SplashFragment : Fragment() {
         }, 3000)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_splash, container, false)
+    }
+    private fun loggedIn(): Boolean {
+        val loggedInStatus = requireActivity().getSharedPreferences("access", Context.MODE_PRIVATE)
+        return loggedInStatus.getBoolean("access", false)
     }
 
     private fun onBoardingFinished(): Boolean {
