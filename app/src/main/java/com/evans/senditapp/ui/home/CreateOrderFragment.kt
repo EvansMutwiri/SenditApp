@@ -58,7 +58,10 @@ class CreateOrderFragment : BaseFragment<AuthViewModel, FragmentCreateOrderBindi
         binding.BtnOrder.setOnClickListener {
             val pick_up: String = binding.locationInput.text.toString()
 
-            viewModel.postOrders(description = "bale", vehicle = "moshogi", destination = "ungwaro", pickup_location = "wanyee", reciever_name = "kinuts", reciever_number = "12345678", weight = "heavy")
+            with(viewModel) {
+
+                postOrders(description = "bale", vehicle = "moshogi", destination = "ungwaro", pickup_location = "wanyee", reciever_name = "kinuts", reciever_number = "12345678", weight = "heavy")
+            }
         }
     }
 

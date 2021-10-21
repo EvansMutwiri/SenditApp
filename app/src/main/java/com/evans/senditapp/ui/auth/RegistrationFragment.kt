@@ -53,15 +53,26 @@ class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBin
 
             // add validation
 
-            if (username.isEmpty() || email.isEmpty()) {
-                Toast.makeText(requireContext(), "Fields cannot be empty", Toast.LENGTH_SHORT).show()
+            if (username.isEmpty()){
+                UsernameTV.error = "User name is required"
+                return@setOnClickListener
             }
-            if (!email.contains("@"))
-                Toast.makeText(requireContext(), "invalid email address", Toast.LENGTH_SHORT).show()
-            if (password != passConfirm)
-                Toast.makeText(requireContext(), "passwords don't match", Toast.LENGTH_SHORT).show()
-            if (password.length < 6)
-                Toast.makeText(requireContext(), "password length must be > 6", Toast.LENGTH_SHORT).show()
+            else if (email.isEmpty()){
+                SignUpEmail.error = "Email is required"
+                return@setOnClickListener
+            }
+            else if (!email.contains("@")) {
+                SignUpEmail.error = "Enter valid email"
+                return@setOnClickListener
+            }
+            else if (password.length < 6) {
+                PasswordSignup.error = "Password too weak. Must be >6 characters"
+                return@setOnClickListener
+            }
+            else if (password != passConfirm) {
+                PasswordSignupConfirm.error = "Password must match"
+                return@setOnClickListener
+            }
             else
             viewModel.signUp(username, email, password)
 

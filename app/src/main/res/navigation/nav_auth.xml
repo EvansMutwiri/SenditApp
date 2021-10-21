@@ -41,9 +41,6 @@
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_mapsActivity"
-            app:destination="@id/mapsActivity" />
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
@@ -65,8 +62,8 @@
         android:label="fragment_create_order"
         tools:layout="@layout/fragment_create_order" >
         <action
-            android:id="@+id/action_createOrderFragment2_to_ordersFragment2"
-            app:destination="@id/ordersFragment2" />
+            android:id="@+id/action_createOrderFragment2_to_order"
+            app:destination="@id/order" />
     </fragment>
     <fragment
         android:id="@+id/userProfileFragment2"
@@ -76,13 +73,10 @@
         <action
             android:id="@+id/action_userProfileFragment2_to_createOrderFragment2"
             app:destination="@id/createOrderFragment2" />
-        <action
-            android:id="@+id/action_userProfileFragment2_to_ordersFragment2"
-            app:destination="@id/ordersFragment2" />
     </fragment>
-    <fragment
-        android:id="@+id/ordersFragment2"
-        android:name="com.evans.senditapp.ui.orders.OrdersFragment"
-        android:label="fragment_orders"
-        tools:layout="@layout/fragment_orders" />
+    <activity
+        android:id="@+id/order"
+        android:name="com.evans.senditapp.ui.orders.Order"
+        android:label="activity_order"
+        tools:layout="@layout/activity_order" />
 </navigation>

@@ -6,6 +6,8 @@ import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -17,10 +19,22 @@ import com.evans.senditapp.data.network.Resource
 import com.evans.senditapp.data.repository.AuthRepository
 import com.evans.senditapp.ui.base.BaseFragment
 import com.evans.senditapp.ui.home.HomeActivity
+import com.evans.senditapp.ui.orders.Order
+import com.google.android.material.textfield.TextInputEditText
+import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
 
     private lateinit var preferencesProvider: PreferencesProvider
+
+//    private lateinit var editEmail: TextInputEditText
+//    private lateinit var editPassword: EditText
+//
+//    init {
+//        editEmail.also { this.editEmail = it }
+//        editPassword.also { this.editPassword = it }
+//
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -40,13 +54,14 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
                         it.value.access).apply()
                     var tok = PreferenceManager.getDefaultSharedPreferences(activity).getString("access", it.value.access)
 //                    Toast.makeText(requireContext(), tok, Toast.LENGTH_SHORT).show()
+                    preferencesProvider.putString("access", it.value.access)
 
                     val email: String = binding.editEmail.text.toString().trim()
                     preferencesProvider.putString("useremail", email)
 
                     Toast.makeText(requireContext(), email, Toast.LENGTH_SHORT).show()
 
-                        val intent = Intent(requireContext(), HomeActivity::class.java)
+                        val intent = Intent(requireContext(), Order::class.java)
                         startActivity(intent)
 //                    findNavController().navigate(R.id.action_registrationFragment_to_userProfileFragment2)
 
@@ -67,15 +82,25 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
             val email: String = binding.editEmail.text.toString().trim()
             val password = binding.editPassword.text.toString()
 
+            val editEmail = binding.editEmail
+            val editPassword = binding.editPassword
+
             //validation
-            if (email.isEmpty() || email.isBlank() || password.isBlank()){
-                Toast.makeText(requireContext(), "Email address or password cannot be blank", Toast.LENGTH_LONG).show()
+            if (email.isEmpty()){
+                editEmail.error = "Cannot be blank"
+                return@setOnClickListener
             }
-            if (!email.contains("@")){
-                Toast.makeText(requireContext(), "Enter valid email address", Toast.LENGTH_LONG).show()
+            else if (!email.contains("@")){
+                editEmail.error = "Enter valid email address"
+                return@setOnClickListener
             }
-            if (password.length < 6){
-                Toast.makeText(requireContext(), "Password must be more than 6 characters", Toast.LENGTH_LONG).show()
+            else if (password.length < 6){
+                editPassword.error = "Password too weak"
+                return@setOnClickListener
+            }
+            else if (password.isEmpty()){
+                editPassword.error = "Password required"
+                return@setOnClickListener
             }
             else {
                 viewModel.login(email, password)

@@ -5,6 +5,7 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="fab">fab</string>
 
     <string-array name="weight_categories">
         <item>LIGHT</item>
