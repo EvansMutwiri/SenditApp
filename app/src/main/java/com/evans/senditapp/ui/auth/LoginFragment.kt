@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.airbnb.lottie.LottieAnimationView
 import com.evans.senditapp.PreferencesProvider
 import com.evans.senditapp.R
 import com.evans.senditapp.databinding.FragmentLoginBinding
@@ -24,6 +25,8 @@ import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
+
+    private lateinit var progressBar: LottieAnimationView
 
     private lateinit var preferencesProvider: PreferencesProvider
 
@@ -103,6 +106,8 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
                 return@setOnClickListener
             }
             else {
+                progressBar = binding.progressBar
+                progressBar.visibility  = View.VISIBLE
                 viewModel.login(email, password)
             }
         }

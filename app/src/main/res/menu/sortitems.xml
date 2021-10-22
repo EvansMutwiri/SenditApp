@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Sort by Weight" android:id="@+id/byweight"/>
-    <item android:title="Sort by Vehicle" android:id="@+id/byvehicle"/>
-    <item android:title="Logout" android:id="@+id/LogOut"/>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Sort by Weight" android:id="@+id/byweight" app:showAsAction="never"/>
+    <item android:title="Sort by Vehicle" android:id="@+id/byvehicle" app:showAsAction="never"/>
+    <item android:id="@+id/menu_refresh" android:title="refresh" app:showAsAction="never" />
+    <item android:title="Logout" android:id="@+id/LogOut" app:showAsAction="never"/>
 </menu>
