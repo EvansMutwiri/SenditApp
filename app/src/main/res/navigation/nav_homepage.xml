@@ -6,7 +6,7 @@
     app:startDestination="@id/order2">
     <fragment
         android:id="@+id/createOrderFragment3"
-        android:name="com.evans.senditapp.ui.home.CreateOrderFragment"
+        android:name="com.evans.senditapp.ui.orders.CreateOrderFragment"
         android:label="fragment_create_order"
         tools:layout="@layout/fragment_create_order" >
         <action

@@ -58,7 +58,7 @@
         tools:layout="@layout/homepage" />
     <fragment
         android:id="@+id/createOrderFragment2"
-        android:name="com.evans.senditapp.ui.home.CreateOrderFragment"
+        android:name="com.evans.senditapp.ui.orders.CreateOrderFragment"
         android:label="fragment_create_order"
         tools:layout="@layout/fragment_create_order" >
         <action

@@ -17,15 +17,15 @@ class AuthRepository(
         password: String
     ) = safeApiCall { api.signUp(email, username, password) }
 
-    suspend fun postOrders(
-        description: String,
-        destination: String,
-        pickup_location: String,
-        reciever_name: String,
-        reciever_number: String,
-        vehicle: String,
-        weight: String
-    ) = safeApiCall { api.postOrders(description, destination, pickup_location, reciever_name, reciever_number, vehicle, weight) }
+//    suspend fun postOrders(
+//        description: String,
+//        destination: String,
+//        pickup_location: String,
+//        reciever_name: String,
+//        reciever_number: String,
+//        vehicle: String,
+//        weight: String
+//    ) = safeApiCall { api.postOrders(description, destination, pickup_location, reciever_name, reciever_number, vehicle, weight) }
 
     suspend fun getData (@Header("Bearer token here")access: String) = safeApiCall { api.getData("") }
 }

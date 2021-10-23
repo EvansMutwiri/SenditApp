@@ -25,16 +25,22 @@ interface AuthApi {
         @Field("password") password: String,
     ) : SignupResponse
 
-    @FormUrlEncoded
+    class Order(
+        val vehicle: String,
+        val description: String,
+        val pickup_location: String,
+        val destination: String,
+        val reciever_name: String,
+        val reciever_number: String,
+        val weight: String,
+        val date: String
+    )
+
+
+//    @FormUrlEncoded
     @POST("order/v1/order/")
-    suspend fun postOrders(
-        @Field("vehicle") vehicle: String,
-        @Field("description") description: String,
-        @Field("pickup_location") pickup_location: String,
-        @Field("destination") destination: String,
-        @Field("reciever_name") reciever_name: String,
-        @Field("reciever_number") reciever_number: String,
-        @Field("weight") weight: String,
+    suspend fun postOrders( @Header("Authorization") token: String,
+                            @Body order: Order
     ) : OrderResponse
 
     @GET("order/v1/order/")

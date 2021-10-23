@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment
 import com.evans.senditapp.PreferencesProvider
 import com.evans.senditapp.R
 import com.evans.senditapp.databinding.HomepageBinding
+import com.evans.senditapp.ui.orders.CreateOrderFragment
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
 import com.google.android.gms.common.api.ResolvableApiException

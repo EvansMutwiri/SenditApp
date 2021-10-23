@@ -42,17 +42,17 @@ class AuthViewModel(
         _signupResponse.value = repository.signUp(email, username, password)
     }
 
-    fun postOrders (
-        description: String,
-        destination: String,
-        pickup_location: String,
-        reciever_name: String,
-        reciever_number: String,
-        vehicle: String,
-        weight: String
-    ) = viewModelScope.launch {
-        _orderResponse.value = repository.postOrders(description, destination, pickup_location, reciever_name, reciever_number, vehicle, weight)
-    }
+//    fun postOrders (
+//        description: String,
+//        destination: String,
+//        pickup_location: String,
+//        reciever_name: String,
+//        reciever_number: String,
+//        vehicle: String,
+//        weight: String
+//    ) = viewModelScope.launch {
+//        _orderResponse.value = repository.postOrders(description, destination, pickup_location, reciever_name, reciever_number, vehicle, weight)
+//    }
 
 //    fun getData(access: String) = viewModelScope.launch {
 //        _orderResponse.value = repository.getData("Bearer token")

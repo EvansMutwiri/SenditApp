@@ -6,10 +6,10 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
-<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -19,9 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SenditApp">
         <activity
+            android:name=".ui.orders.CreateOrderActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.orders.Order"
-            android:exported="true" >
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="true" />
