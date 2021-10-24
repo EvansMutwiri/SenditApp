@@ -46,15 +46,15 @@ class MyAdapter(val context: Context, var orders: List<OrderResponse>): Recycler
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.orderId.text = orders[position].id.toString()
-        holder.vehicle.text = orders[position].vehicle
-        holder.ownerId.text = orders[position].owner_id.toString()
-        holder.description.text = orders[position].description
-        holder.location.text = orders[position].pickup_location
-        holder.destination.text = orders[position].destination
-        holder.receiver.text = orders[position].reciever_name
-        holder.receiverNumber.text = orders[position].reciever_number
-        holder.weight.text = orders[position].weight
+        holder.orderId.text ="Order ID: "+ orders[position].id.toString()
+        holder.vehicle.text ="Vehicle: " + orders[position].vehicle
+        holder.ownerId.text ="Owner ID: "+ orders[position].owner_id.toString()
+        holder.description.text ="Decription: " + orders[position].description
+        holder.location.text ="Pickup Location: " + orders[position].pickup_location
+        holder.destination.text ="Destination : " + orders[position].destination
+        holder.receiver.text ="Reciever name: "+ orders[position].reciever_name
+        holder.receiverNumber.text ="Reciever number: "+ orders[position].reciever_number
+        holder.weight.text ="Weight: "+ orders[position].weight
     }
 
     override fun getItemCount(): Int {

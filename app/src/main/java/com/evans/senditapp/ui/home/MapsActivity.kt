@@ -9,24 +9,21 @@ import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.Fragment
 import com.evans.senditapp.PreferencesProvider
 import com.evans.senditapp.R
 import com.evans.senditapp.databinding.HomepageBinding
-import com.evans.senditapp.ui.orders.CreateOrderFragment
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.location.places.ui.PlacePicker
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -112,14 +109,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         val fAButton : FloatingActionButton = findViewById(R.id.fAxnButton)
 
         fAButton.setOnClickListener{
-            val createOrderFragment = CreateOrderFragment()
-            val fragment : Fragment? =
-
-            supportFragmentManager.findFragmentByTag(CreateOrderFragment::class.java.simpleName)
-            if (fragment !is CreateOrderFragment){
-                supportFragmentManager.beginTransaction()
-                    .add(R.id.floater, createOrderFragment, CreateOrderFragment::class.java.simpleName).commit()
-            }
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
 
         createLocationRequest()

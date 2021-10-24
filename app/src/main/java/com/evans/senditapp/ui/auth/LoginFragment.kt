@@ -6,8 +6,6 @@ import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -20,8 +18,6 @@ import com.evans.senditapp.data.network.Resource
 import com.evans.senditapp.data.repository.AuthRepository
 import com.evans.senditapp.ui.base.BaseFragment
 import com.evans.senditapp.ui.home.HomeActivity
-import com.evans.senditapp.ui.orders.Order
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
@@ -64,7 +60,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
 
                     Toast.makeText(requireContext(), email, Toast.LENGTH_SHORT).show()
 
-                        val intent = Intent(requireContext(), Order::class.java)
+                        val intent = Intent(requireContext(), HomeActivity::class.java)
                         startActivity(intent)
 //                    findNavController().navigate(R.id.action_registrationFragment_to_userProfileFragment2)
 

@@ -3,8 +3,7 @@ package com.evans.senditapp.ui.orders
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.ArrayAdapter
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import com.evans.senditapp.PreferencesProvider
@@ -15,6 +14,10 @@ import com.evans.senditapp.data.repository.AuthRepository
 import com.evans.senditapp.databinding.FragmentCreateOrderBinding
 import com.evans.senditapp.ui.auth.AuthViewModel
 import com.evans.senditapp.ui.base.BaseFragment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.android.synthetic.main.confirmbottomsheet.*
+import kotlinx.android.synthetic.main.fragment_create_order.*
+import kotlinx.android.synthetic.main.order_layout.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,6 +30,17 @@ import java.time.LocalDate
 class CreateOrderFragment : BaseFragment<AuthViewModel, FragmentCreateOrderBinding, AuthRepository>() {
 
     private lateinit var preferencesProvider: PreferencesProvider
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
+    lateinit var radioButton: RadioButton
+//    lateinit var medium: RadioButton
+//    lateinit var heavy: RadioButton
+//
+//    lateinit var bike: RadioButton
+//    lateinit var motorbike: RadioButton
+//    lateinit var van: RadioButton
+//    lateinit var truck: RadioButton
+
+    var radioGroup: RadioGroup? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +53,8 @@ class CreateOrderFragment : BaseFragment<AuthViewModel, FragmentCreateOrderBindi
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
 
         preferencesProvider = PreferencesProvider(requireContext())
 
@@ -56,26 +72,45 @@ class CreateOrderFragment : BaseFragment<AuthViewModel, FragmentCreateOrderBindi
                 }
             }
         })
-//        val vehicle = listOf("Van", "Bike", "truck")
-//        val adapter = ArrayAdapter(requireContext(), R.layout.dropdown_vehicles, vehicle)
-//        (vehicleInput.editableText as? AutoCompleteTextView)?.setAdapter(adapter)
 
-        val weight = resources.getStringArray(R.array.weight_categories)
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_weights, R.id.tV, weight)
-        binding.weightInput.setAdapter(arrayAdapter)
-
-//        val vehicle = resources.getStringArray(R.array.vehicle_categories)
-//        val arrAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_vehicles, vehicle)
-//        binding.vehicleInput.setAdapter(arrAdapter)
 
 
         binding.BtnOrder.setOnClickListener {
-//            val pick_up: String = binding.locationInput.text.toString()
 
-            CoroutineScope(Dispatchers.IO).launch {
-                postOrders()
+            if (binding.descriptionInput.text.toString().isEmpty()) {
+                descriptionTextField.error = "Field is required"
+                return@setOnClickListener
+            }
+            else if (binding.locationInput.text.toString().isEmpty()) {
+                locationTextField.error = "Field is required"
+                return@setOnClickListener
+            }
+            else if (binding.destinationInput.text.toString().isEmpty()) {
+                destinationTextField.error = "Field is required"
+            }
+            else if (binding.receiverNameInput.text.toString().isEmpty()) {
+                receiverTextField.error = "Field is required!"
+            }
+            else if (binding.receiverNumberInput.text.toString().isEmpty()) {
+                recivernumberTextField.error = "Field is required!"
+            }
+            else {
+                if (bottomSheetBehavior.state==BottomSheetBehavior.STATE_EXPANDED)
+                {
+                    bottomSheetBehavior.state=BottomSheetBehavior.STATE_COLLAPSED
+                } else {
+                    bottomSheetBehavior.state=BottomSheetBehavior.STATE_EXPANDED
+                    buttonConfirm.setOnClickListener {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            postOrders()
+                        }
+                    }
+                }
             }
 
+        }
+        buttonCancel.setOnClickListener {
+            bottomSheetBehavior.state=BottomSheetBehavior.STATE_COLLAPSED
         }
     }
 
@@ -96,9 +131,26 @@ class CreateOrderFragment : BaseFragment<AuthViewModel, FragmentCreateOrderBindi
             .build()
             .create(AuthApi::class.java)
 
+//        var heavy: String = binding.heavy.toString()
         var date = LocalDate.parse("2018-12-12")
+        var description: String = binding.descriptionInput.text.toString()
+        var pickup_location: String = binding.locationInput.text.toString()
+        var destination: String = binding.destinationInput.text.toString()
+        var reciever_name: String = binding.receiverNameInput.text.toString()
+        var reciever_number: String = binding.receiverNameInput.text.toString()
+        val weight = "light"
 
-        val retrofitData = retrofitBuilder.postOrders("Bearer " + preferencesProvider.getString("access"), AuthApi.Order("bale", "moshogi", "ungwaro", "wanyee", "kinuts", "12345678", "heavy", date.toString()))
+
+        val retrofitData = retrofitBuilder.postOrders("Bearer " + preferencesProvider.getString("access"), AuthApi.Order(
+            weight = "light",
+            vehicle = "van",
+            date = date.toString(),
+            pickup_location = locationInput.text.toString(),
+            destination = destinationInput.text.toString(),
+            description = descriptionInput.text.toString(),
+            reciever_name = receiverNameInput.text.toString(),
+            reciever_number = receiverNumberInput.text.toString()
+        ))
 
     }
 

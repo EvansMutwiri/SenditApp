@@ -4,38 +4,19 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_margin="6dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
         <androidx.cardview.widget.CardView
+            android:backgroundTint="@color/sendit_100"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#43BB86FC"
-            android:elevation="8dp"
-            app:cardCornerRadius="6dp">
+            android:elevation="10dp"
+            app:cardCornerRadius="4dp">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:gravity="end"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:src="@drawable/ic_outline_person_outline_24"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:src="@drawable/ic_outline_person_outline_24"/>
-            </LinearLayout>
+                android:layout_height="wrap_content"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,7 +26,7 @@
                 android:padding="8dp">
 
                 <LinearLayout
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:orientation="vertical">
@@ -59,37 +40,47 @@
                             android:id="@+id/order_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Order ID: " />
+                            android:padding="3dp"
+                            android:text="Order ID: "
+                            android:textColor="@color/black" />
                     </LinearLayout>
 
                     <TextView
                         android:id="@+id/vehicle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vehicle: " />
+                        android:padding="3dp"
+                        android:text="Vehicle: "
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/owner_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Owner ID: " />
+                        android:padding="3dp"
+                        android:text="Owner ID: "
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Decription: " />
+                        android:padding="3dp"
+                        android:text="Decription: "
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/pickup_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pickup Location: " />
+                        android:padding="3dp"
+                        android:text="Pickup Location: "
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:orientation="vertical">
@@ -98,32 +89,39 @@
                         android:id="@+id/destination"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Destination : " />
+                        android:padding="3dp"
+                        android:text="Destination : "
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/reciever_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Reciever name: " />
+                        android:padding="3dp"
+                        android:text="Reciever name: "
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/reciever_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Reciever number: " />
+                        android:padding="3dp"
+                        android:text="Reciever number: "
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/weight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Weight: " />
+                        android:padding="3dp"
+                        android:text="Weight: "
+                        android:textColor="@color/black" />
+
 
                 </LinearLayout>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
 
 </LinearLayout>

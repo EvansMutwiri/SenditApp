@@ -2,16 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_homepage"
-    app:startDestination="@id/order2">
+    android:id="@+id/nav_homepage">
     <fragment
         android:id="@+id/createOrderFragment3"
         android:name="com.evans.senditapp.ui.orders.CreateOrderFragment"
         android:label="fragment_create_order"
         tools:layout="@layout/fragment_create_order" >
-        <action
-            android:id="@+id/action_createOrderFragment3_to_order2"
-            app:destination="@id/order2" />
         <action
             android:id="@+id/action_createOrderFragment3_to_userProfileFragment3"
             app:destination="@id/userProfileFragment3" />
@@ -20,10 +16,9 @@
         android:id="@+id/userProfileFragment3"
         android:name="com.evans.senditapp.ui.home.UserProfileFragment"
         android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_user_profile" />
-    <activity
-        android:id="@+id/order2"
-        android:name="com.evans.senditapp.ui.orders.Order"
-        android:label="activity_order"
-        tools:layout="@layout/activity_order" />
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfileFragment3_to_createOrderFragment3"
+            app:destination="@id/createOrderFragment3" />
+    </fragment>
 </navigation>

@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/floater"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     tools:context=".ui.orders.CreateOrderFragment">
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="56dp">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginBottom="610dp"
+                android:elevation="2dp"
+                android:layout_height="?attr/actionBarSize"
                 app:layout_constraintBottom_toTopOf="@+id/locationHeader"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +41,8 @@
                 android:layout_margin="12dp"
                 android:gravity="start"
                 android:text="Enter pickup location"
-                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:textColor="@color/sendit_900"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.057"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +54,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
-                android:hint="Location"
+                android:hint="Current Location"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.057"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
-                android:hint="Destination"
+                android:hint="Delivery Location"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.057"
                 app:layout_constraintStart_toStartOf="parent"
@@ -83,41 +86,67 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
+
             <TextView
                 android:id="@+id/packageHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_margin="16dp"
                 android:gravity="start"
-                android:text="Description"
-                android:textColor="@color/black"
+                android:text="Parcel Description"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:textColor="@color/sendit_900"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.057"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/destinationTextField" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <LinearLayout
                 android:id="@+id/weightTextField"
+                android:orientation="vertical"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:hint="Weight"
-                app:endIconDrawable="@drawable/ic_drop_down_24"
-                app:endIconMode="custom"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.057"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/packageHeader">
 
-                <AutoCompleteTextView
-                    android:id="@+id/weightInput"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:paddingStart="16dp" />
+                    android:layout_marginTop="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="Weight category:"
+                    android:textColor="@color/black"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <RadioGroup
+                    android:id="@+id/weightGrp"
+                    android:layout_marginStart="16dp"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Light"/>
+                    <RadioButton
+                        android:id="@+id/medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medium"/>
+                    <RadioButton
+                        android:id="@+id/heavy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Heavy"/>
+                </RadioGroup>
+
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/descriptionTextField"
@@ -125,13 +154,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
-                android:hint="Description"
+                android:hint="What's in the package..."
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.057"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/weightTextField">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descriptionInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -143,37 +173,65 @@
                 android:id="@+id/vehicleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_margin="16dp"
                 android:gravity="start"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:text="Delivery details"
-                android:textColor="@color/black"
+                android:textColor="@color/sendit_900"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.057"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionTextField" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <LinearLayout
                 android:id="@+id/vehicleTextField"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:hint="Vehicle"
-                app:endIconDrawable="@drawable/ic_drop_down_24"
-                app:endIconMode="custom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.057"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/vehicleTextView">
 
-                <AutoCompleteTextView
-                    android:id="@+id/vehicleInput"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:paddingStart="16dp" />
+                    android:layout_marginTop="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="Select appropriate vehicle:"
+                    android:textColor="@color/black"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <RadioGroup
+                    android:id="@+id/vehicleGrp"
+                    android:layout_marginStart="16dp"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bike"
+                        android:text="Bike"/>
+                    <RadioButton
+                        android:id="@+id/motorbike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Motorbike"/>
+                    <RadioButton
+                        android:id="@+id/van"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Van"/>
+                    <RadioButton
+                        android:id="@+id/truck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Truck"/>
+                </RadioGroup>
+
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/receiverTextField"
@@ -188,6 +246,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/vehicleTextField">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/receiverNameInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -219,6 +278,7 @@
                 android:layout_margin="16dp"
                 android:text="Place Order"
                 android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@+id/recivernumberTextField"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -226,5 +286,7 @@
 
     </ScrollView>
 
+    <include layout="@layout/confirmbottomsheet"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
