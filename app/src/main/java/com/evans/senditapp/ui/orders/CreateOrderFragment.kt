@@ -26,6 +26,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.time.LocalDate
+import java.time.LocalDateTime.now
 
 class CreateOrderFragment : BaseFragment<AuthViewModel, FragmentCreateOrderBinding, AuthRepository>() {
 
@@ -132,7 +133,8 @@ class CreateOrderFragment : BaseFragment<AuthViewModel, FragmentCreateOrderBindi
             .create(AuthApi::class.java)
 
 //        var heavy: String = binding.heavy.toString()
-        var date = LocalDate.parse("2018-12-12")
+//        var date = LocalDate.parse("2021-10-25")
+        var date = LocalDate.parse(now().toLocalDate().toString())
         var description: String = binding.descriptionInput.text.toString()
         var pickup_location: String = binding.locationInput.text.toString()
         var destination: String = binding.destinationInput.text.toString()

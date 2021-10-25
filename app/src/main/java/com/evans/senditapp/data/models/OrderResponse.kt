@@ -9,5 +9,6 @@ data class OrderResponse(
     val reciever_name: String,
     val reciever_number: String,
     val vehicle: String,
-    val weight: String
+    val weight: String,
+    val date : String
 )

@@ -36,7 +36,7 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.homepage.*
 import java.io.IOException
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener, NavigationView.OnNavigationItemSelectedListener {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private lateinit var locationCallback: LocationCallback
     private lateinit var locationRequest: LocationRequest
@@ -44,7 +44,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
 
     private lateinit var mMap: GoogleMap
-    private lateinit var binding: HomepageBinding
     private lateinit var preferencesProvider: PreferencesProvider
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var lastLocation: Location
@@ -62,15 +61,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = HomepageBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+//        binding = HomepageBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
 
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
-        drawerLayout.addDrawerListener(toggle)
-
-        toggle.syncState()
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+//        drawerLayout.addDrawerListener(toggle)
+//
+//        toggle.syncState()
+//
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //initialize fused location
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -88,15 +87,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
 
 
-        navView.setNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.profile -> Toast.makeText(applicationContext, "clicked 1", Toast.LENGTH_SHORT).show()
-                R.id.orders -> Toast.makeText(applicationContext, "clicked 2", Toast.LENGTH_SHORT).show()
-                R.id.refer -> Toast.makeText(applicationContext, "clicked 3", Toast.LENGTH_SHORT).show()
-                R.id.logout -> Toast.makeText(applicationContext, "logout", Toast.LENGTH_SHORT).show()
-            }
-            true
-        }
+//        navView.setNavigationItemSelectedListener {
+//            when(it.itemId){
+//                R.id.profile -> Toast.makeText(applicationContext, "clicked 1", Toast.LENGTH_SHORT).show()
+//                R.id.orders -> Toast.makeText(applicationContext, "clicked 2", Toast.LENGTH_SHORT).show()
+//                R.id.refer -> Toast.makeText(applicationContext, "clicked 3", Toast.LENGTH_SHORT).show()
+//                R.id.logout -> Toast.makeText(applicationContext, "logout", Toast.LENGTH_SHORT).show()
+//            }
+//            true
+//        }
 
         preferencesProvider = PreferencesProvider(applicationContext)
 
@@ -311,8 +310,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         }
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        return true
-    }
+//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+//        return true
+//    }
 
 }

@@ -24,6 +24,7 @@ class MyAdapter(val context: Context, var orders: List<OrderResponse>): Recycler
         var receiver: TextView
         var receiverNumber: TextView
         var weight: TextView
+        var dateView: TextView
 
 
         init {
@@ -36,6 +37,7 @@ class MyAdapter(val context: Context, var orders: List<OrderResponse>): Recycler
             receiver = itemView.reciever_name
             receiverNumber = itemView.reciever_number
             weight = itemView.weight
+            dateView = itemView.dateView
         }
 
     }
@@ -55,6 +57,7 @@ class MyAdapter(val context: Context, var orders: List<OrderResponse>): Recycler
         holder.receiver.text ="Reciever name: "+ orders[position].reciever_name
         holder.receiverNumber.text ="Reciever number: "+ orders[position].reciever_number
         holder.weight.text ="Weight: "+ orders[position].weight
+        holder.dateView.text ="Date: "+ orders[position].date
     }
 
     override fun getItemCount(): Int {

@@ -117,6 +117,14 @@
                         android:text="Weight: "
                         android:textColor="@color/black" />
 
+                    <TextView
+                        android:id="@+id/dateView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:text="Date: "
+                        android:textColor="@color/black" />
+
 
                 </LinearLayout>
 

@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.evans.senditapp.databinding.FragmentHomeBinding
 import android.content.Intent
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.evans.senditapp.R
 import com.evans.senditapp.ui.home.HomeActivity
@@ -51,8 +52,9 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_navigation_home_to_createOrderFragment)
         }
         map.setOnClickListener {
-            val intent = Intent(requireContext(), MapsActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(requireContext(), MapsActivity::class.java)
+//            startActivity(intent)
+            Toast.makeText(requireContext(), "Track package", Toast.LENGTH_SHORT).show()
         }
         orders.setOnClickListener {
             val intent = Intent(requireContext(), Order::class.java)
